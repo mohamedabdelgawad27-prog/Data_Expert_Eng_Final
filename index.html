@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Gawad | Project & Data Expert</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0c10;--surface:#111318;--gold:#f0c040;--gold2:#e0a820;--cyan:#00d4c8;--text:#e8eaf0;--muted:#7a8090;--border:#252a35}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;overflow-x:hidden}
+  body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.5}
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 4rem;background:rgba(10,12,16,.88);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+  .nav-logo{font-family:'Space Mono',monospace;color:var(--gold);font-size:.95rem;letter-spacing:3px}
+  .nav-links{display:flex;gap:2rem;list-style:none}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:600;transition:color .3s}
+  .nav-links a:hover{color:var(--gold)}
+  .hero{min-height:100vh;display:flex;align-items:center;position:relative;padding:8rem 4rem 4rem;overflow:hidden;gap:4rem}
+  .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 50%,rgba(240,192,64,.07) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 80% 30%,rgba(0,212,200,.05) 0%,transparent 60%)}
+  .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(240,192,64,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(240,192,64,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black 30%,transparent 80%)}
+  .hero-content{position:relative;z-index:1;flex:1;max-width:680px}
+  .hero-photo-wrap{position:relative;z-index:1;flex-shrink:0;animation:fadeUp .8s .5s ease both}
+  .hero-photo-ring{width:260px;height:260px;border-radius:50%;padding:4px;background:conic-gradient(var(--gold),var(--gold2),var(--cyan),var(--gold));animation:spin 8s linear infinite;box-shadow:0 0 60px rgba(240,192,64,.2)}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .hero-photo-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;border:4px solid var(--bg);animation:spin 8s linear infinite reverse}
+  .hero-photo-inner img{width:100%;height:100%;object-fit:cover;object-position:top center}
+  .hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:rgba(240,192,64,.1);border:1px solid rgba(240,192,64,.3);color:var(--gold);padding:.4rem 1rem;border-radius:100px;font-size:.78rem;font-weight:700;letter-spacing:2px;margin-bottom:1.5rem;animation:fadeUp .8s ease both}
+  .badge-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+  .hero-name{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;line-height:1.1;margin-bottom:.5rem;animation:fadeUp .8s .1s ease both}
+  .hero-name span{color:var(--gold)}
+  .hero-certs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;animation:fadeUp .8s .15s ease both}
+  .cert-badge{font-family:'Space Mono',monospace;font-size:.65rem;background:rgba(0,212,200,.08);border:1px solid rgba(0,212,200,.25);color:var(--cyan);padding:.25rem .7rem;border-radius:4px}
+  .hero-title{font-family:'Space Mono',monospace;font-size:clamp(.75rem,1.2vw,.9rem);color:var(--cyan);letter-spacing:2px;margin-bottom:1.2rem;animation:fadeUp .8s .2s ease both}
+  .hero-desc{font-size:1rem;color:var(--muted);line-height:1.9;max-width:600px;margin-bottom:2.5rem;animation:fadeUp .8s .3s ease both}
+  .hero-cta{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeUp .8s .4s ease both}
+  .btn-primary{background:var(--gold);color:#0a0c10;padding:.85rem 2rem;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s;display:inline-block}
+  .btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(240,192,64,.25)}
+  .btn-secondary{border:1px solid var(--border);color:var(--text);padding:.85rem 2rem;border-radius:6px;font-weight:600;font-size:.9rem;text-decoration:none;transition:all .3s;display:inline-block}
+  .btn-secondary:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+  .btn-whatsapp{background:#25d366;color:#fff;padding:.85rem 2rem;border-radius:6px;font-weight:700;font-size:.9rem;text-decoration:none;transition:all .3s;display:inline-flex;align-items:center;gap:.5rem}
+  .btn-whatsapp:hover{background:#1ebe5c;transform:translateY(-2px)}
+  .stats-strip{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:2.5rem 4rem;display:flex;justify-content:center;gap:5rem;flex-wrap:wrap}
+  .stat-item{text-align:center}
+  .stat-number{font-family:'Space Mono',monospace;font-size:2.6rem;font-weight:700;color:var(--gold);line-height:1;margin-bottom:.3rem}
+  .stat-label{font-size:.82rem;color:var(--muted);letter-spacing:1px;font-weight:600}
+  section{padding:5rem 4rem;position:relative}
+  .section-label{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:.8rem}
+  .section-title{font-size:clamp(1.8rem,3vw,2.5rem);font-weight:900;margin-bottom:.8rem;line-height:1.2}
+  .section-title span{color:var(--gold)}
+  .section-desc{color:var(--muted);font-size:.95rem;line-height:1.8;max-width:550px;margin-bottom:3rem}
+  #skills{background:var(--surface)}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+  .skill-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;position:relative;overflow:hidden;transition:all .4s;cursor:default}
+  .skill-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+  .skill-card:hover{border-color:rgba(240,192,64,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .skill-card:hover::before{opacity:1}
+  .skill-icon{font-size:2rem;margin-bottom:.8rem;display:block}
+  .skill-name{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+  .skill-desc{font-size:.83rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+  .skill-level{height:3px;background:var(--border);border-radius:10px;overflow:hidden}
+  .skill-fill{height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold));border-radius:10px;transition:width 1.5s cubic-bezier(.4,0,.2,1)}
+  .skill-pct{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--gold);margin-top:.4rem}
+  #dashboards{background:var(--bg)}
+  .dash-showcase{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+  .dash-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;transition:all .4s}
+  .dash-card:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.4);border-color:rgba(240,192,64,.25)}
+  .dash-thumb{height:160px;overflow:hidden;background:#0a0c10}
+  .dash-thumb img{width:100%;height:100%;object-fit:cover;object-position:top;opacity:.9;transition:opacity .3s}
+  .dash-card:hover .dash-thumb img{opacity:1}
+  .dash-info{padding:1.2rem}
+  .dash-tag{font-family:'Space Mono',monospace;font-size:.63rem;letter-spacing:2px;color:var(--gold);margin-bottom:.4rem;display:block}
+  .dash-title{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
+  .dash-desc{font-size:.8rem;color:var(--muted);line-height:1.6}
+  .dash-tools{display:flex;gap:.35rem;flex-wrap:wrap;margin-top:.7rem}
+  .tool-tag{font-size:.67rem;background:rgba(0,212,200,.08);border:1px solid rgba(0,212,200,.2);color:var(--cyan);padding:.18rem .55rem;border-radius:4px;font-family:'Space Mono',monospace}
+  #services{background:var(--surface)}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+  .service-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;position:relative;overflow:hidden;transition:all .4s;cursor:default}
+  .service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .4s}
+  .service-card:hover{border-color:rgba(240,192,64,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .service-card:hover::before{opacity:1}
+  .service-icon{font-size:2rem;margin-bottom:.8rem;display:block}
+  .service-name{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:var(--gold)}
+  .service-desc{font-size:.83rem;color:var(--muted);line-height:1.75}
+  #models{background:var(--bg)}
+  .models-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem}
+  .model-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:all .3s;position:relative;overflow:hidden}
+  .model-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity .4s}
+  .model-card:hover{border-color:rgba(0,212,200,.3);transform:translateY(-4px);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+  .model-card:hover::before{opacity:1}
+  .model-num{font-family:'Space Mono',monospace;font-size:2.5rem;font-weight:700;color:rgba(240,192,64,.12);line-height:1;margin-bottom:.8rem}
+  .model-title{font-size:1rem;font-weight:700;color:var(--cyan);margin-bottom:.4rem}
+  .model-desc{font-size:.83rem;color:var(--muted);line-height:1.7;margin-bottom:1rem}
+  .model-result{display:inline-flex;align-items:center;gap:.4rem;background:rgba(240,192,64,.08);border:1px solid rgba(240,192,64,.2);color:var(--gold);padding:.3rem .8rem;border-radius:4px;font-family:'Space Mono',monospace;font-size:.72rem;margin-bottom:1rem}
+  #education{background:var(--surface)}
+  .edu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem}
+  .edu-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.8rem;transition:all .3s}
+  .edu-card:hover{border-color:rgba(0,212,200,.3);transform:translateY(-3px)}
+  .edu-icon{font-size:2rem;margin-bottom:.8rem}
+  .edu-degree{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
+  .edu-place{font-size:.83rem;color:var(--cyan);margin-bottom:.3rem;font-weight:600}
+  .edu-year{font-family:'Space Mono',monospace;font-size:.7rem;color:var(--muted);margin-bottom:.5rem}
+  .edu-note{font-size:.8rem;color:var(--muted)}
+  #about{background:var(--bg)}
+  #contact{background:var(--surface);text-align:center}
+  .contact-inner{max-width:600px;margin:0 auto}
+  .contact-cards{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin:2rem 0}
+  .contact-card{display:flex;align-items:center;gap:.8rem;background:var(--bg);border:1px solid var(--border);padding:1rem 1.8rem;border-radius:10px;text-decoration:none;color:var(--text);transition:all .3s}
+  .contact-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,.3)}
+  .contact-card.whatsapp:hover{border-color:#25d366}
+  .contact-icon{font-size:1.4rem}
+  .contact-label{font-size:.7rem;color:var(--muted);font-family:'Space Mono',monospace;letter-spacing:1px;margin-bottom:.2rem}
+  .contact-value{font-size:.88rem;font-weight:700}
+  .contact-card.whatsapp .contact-value{color:#25d366}
+  .contact-card.email .contact-value{color:var(--gold)}
+  .social-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem}
+  .social-btn{display:inline-flex;align-items:center;gap:.5rem;border:1px solid var(--border);color:var(--muted);padding:.7rem 1.4rem;border-radius:6px;text-decoration:none;font-size:.83rem;font-weight:600;transition:all .3s}
+  .social-btn:hover{border-color:var(--gold);color:var(--gold);background:rgba(240,192,64,.05)}
+  footer{background:var(--bg);border-top:1px solid var(--border);padding:1.8rem 4rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  footer span{font-family:'Space Mono',monospace;font-size:.72rem;color:var(--muted)}
+  .footer-logo{color:var(--gold)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  @media(max-width:900px){
+    .hero{flex-direction:column-reverse;padding:7rem 1.5rem 4rem;gap:2rem;text-align:center}
+    .hero-photo-ring{width:200px;height:200px}
+    .hero-certs,.hero-cta{justify-content:center}
+    .dash-showcase,.services-grid{grid-template-columns:1fr}
+    nav{padding:1rem 1.5rem}
+    .nav-links{display:none}
+    section{padding:4rem 1.5rem}
+    .stats-strip{padding:2rem 1.5rem;gap:3rem}
+    footer{padding:1.5rem}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">MG · PMP®</div>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#dashboards">Dashboards</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#models">Python</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="badge-dot"></div>Available for Opportunities · Open to Projects</div>
+    <h1 class="hero-name">Mohamed <span>Gawad</span></h1>
+    <div class="hero-certs">
+      <span class="cert-badge">PMP®</span>
+      <span class="cert-badge">PRMG · AUC</span>
+      <span class="cert-badge">Lean Six Sigma Black Belt</span>
+      <span class="cert-badge">Civil Engineer · Ain Shams</span>
+    </div>
+    <p class="hero-title">// PROJECT MANAGEMENT · DATA ANALYTICS · POWER BI · PYTHON</p>
+    <p class="hero-desc">A Project & Data Engineer with <strong style="color:var(--text)">15+ years</strong> of experience across various industries, combining an engineering mindset with data tools to turn numbers into clear decisions. Leading major projects and building precise planning & analytics systems at <strong style="color:var(--text)">AIC Steel</strong>, <strong style="color:var(--text)">El Sewedy Electric</strong>, and <strong style="color:var(--text)">Zamil Steel</strong>. <strong style="color:var(--gold)">PMP® Certified</strong> — Civil Engineering graduate, Ain Shams University.</p>
+    <div class="hero-cta">
+      <a href="https://wa.me/201007456505" target="_blank" class="btn-whatsapp">💬 WhatsApp</a>
+      <a href="mailto:mohamedabdelgawad27@gmail.com" class="btn-primary">Contact Me</a>
+      <a href="#services" class="btn-secondary">My Services</a>
+    </div>
+  </div>
+  <div class="hero-photo-wrap">
+    <div class="hero-photo-ring">
+      <div class="hero-photo-inner">
+        <img id="profileImg" alt="Mohamed Gawad"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item reveal"><div class="stat-number">15+</div><div class="stat-label">Years Experience</div></div>
+  <div class="stat-item reveal"><div class="stat-number">100+</div><div class="stat-label">Dashboards Built</div></div>
+  <div class="stat-item reveal"><div class="stat-number">3</div><div class="stat-label">Major Companies</div></div>
+  <div class="stat-item reveal"><div class="stat-number">150K</div><div class="stat-label">Tons/Year Managed</div></div>
+  <div class="stat-item reveal"><div class="stat-number">1000+</div><div class="stat-label">Workers Tracked</div></div>
+</div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// Core Skills</div>
+  <h2 class="section-title">Core <span>Skills</span></h2>
+  <p class="section-desc">A unique blend of project management, data analytics, and business intelligence.</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal">
+      <span class="skill-icon">⚡</span>
+      <div class="skill-name">Power BI Service & Desktop</div>
+      <div class="skill-desc">Built 100+ interactive dashboards for project tracking, production, inventory, and human resources management.</div>
+      <div class="skill-level"><div class="skill-fill" style="width:95%"></div></div>
+      <div class="skill-pct">95%</div>
+    </div>
+    <div class="skill-card reveal">
+      <span class="skill-icon">📊</span>
+      <div class="skill-name">Microsoft Excel & VBA</div>
+      <div class="skill-desc">Full professional proficiency including Macros programming, report automation, and complex data analysis.</div>
+      <div class="skill-level"><div class="skill-fill" style="width:95%"></div></div>
+      <div class="skill-pct">95%</div>
+    </div>
+    <div class="skill-card reveal">
+      <span class="skill-icon">🏗️</span>
+      <div class="skill-name">Project Management</div>
+      <div class="skill-desc">Managing the full project lifecycle from Kick-off to delivery — Master Plan, daily follow-up, and problem-solving.</div>
+      <div class="skill-level"><div class="skill-fill" style="width:90%"></div></div>
+      <div class="skill-pct">90%</div>
+    </div>
+    <div class="skill-card reveal">
+      <span class="skill-icon">🐍</span>
+      <div class="skill-name">Python & Data Science</div>
+      <div class="skill-desc">Building Regression, Clustering, and Time Series Forecasting models using Pandas, Scikit-learn, and Prophet.</div>
+      <div class="skill-level"><div class="skill-fill" style="width:85%"></div></div>
+      <div class="skill-pct">85%</div>
+    </div>
+    <div class="skill-card reveal">
+      <span class="skill-icon">🧠</span>
+      <div class="skill-name">Statistical Modeling & DAX</div>
+      <div class="skill-desc">Building precise statistical models with DAX mastery for Pearson and Regression calculations inside Power BI.</div>
+      <div class="skill-level"><div class="skill-fill" style="width:90%"></div></div>
+      <div class="skill-pct">90%</div>
+    </div>
+    <div class="skill-card reveal">
+      <span class="skill-icon">🎯</span>
+      <div class="skill-name">Data-Driven Decision Making</div>
+      <div class="skill-desc">Transforming production, project, and resource data into actionable decisions at the senior management level.</div>
+      <div class="skill-level"><div class="skill-fill" style="width:98%"></div></div>
+      <div class="skill-pct">98%</div>
+    </div>
+  </div>
+</section>
+
+<!-- DASHBOARDS -->
+<section id="dashboards">
+  <div class="section-label">// Power BI Work</div>
+  <h2 class="section-title">Featured <span>Dashboards</span></h2>
+  <p class="section-desc">Real-world projects from 15+ years in heavy industries and steel construction.</p>
+  <div class="dash-showcase">
+    <div class="dash-card reveal">
+      <div class="dash-thumb"><img src="https://i.ibb.co/qMTBbLkg/Sales-Dashboard.webp" alt="Sales Dashboard"/></div>
+      <div class="dash-info">
+        <span class="dash-tag">SALES · 393 PROJECTS · 9 COUNTRIES</span>
+        <div class="dash-title">Sales Project Dashboard</div>
+        <div class="dash-desc">Comprehensive analysis of 393 projects — 123,963 tons, 235 clients, sales managers performance, geographical distribution across 9 countries, and revenue growth from 2021 to 2026.</div>
+        <div class="dash-tools"><span class="tool-tag">Power BI</span><span class="tool-tag">Maps</span><span class="tool-tag">DAX</span><span class="tool-tag">Time Intelligence</span></div>
+      </div>
+    </div>
+    <div class="dash-card reveal">
+      <div class="dash-thumb"><img src="https://i.ibb.co/wFkfKGFp/Time-Series-Analysis.webp" alt="Time Series"/></div>
+      <div class="dash-info">
+        <span class="dash-tag">FORECASTING · TIME SERIES · PROPHET</span>
+        <div class="dash-title">Sales Forecasting — Time Series Model</div>
+        <div class="dash-desc">Time Series model to forecast future tonnage with Confidence Intervals — used for planning raw materials and workforce requirements for coming months through 2026.</div>
+        <div class="dash-tools"><span class="tool-tag">Python</span><span class="tool-tag">Prophet</span><span class="tool-tag">Power BI</span><span class="tool-tag">Deneb</span></div>
+      </div>
+    </div>
+    <div class="dash-card reveal">
+      <div class="dash-thumb"><img src="https://i.ibb.co/60RHHSGn/Decomposition-analysis.webp" alt="Decomposition"/></div>
+      <div class="dash-info">
+        <span class="dash-tag">DECOMPOSITION · TREND · SEASONAL</span>
+        <div class="dash-title">Data Decomposition — Trend · Seasonal · Residual</div>
+        <div class="dash-desc">Sales pattern analysis by decomposing data into Trend + Seasonality + Residual to evaluate model strength and understand market behavior from 2022 to 2025.</div>
+        <div class="dash-tools"><span class="tool-tag">Power BI</span><span class="tool-tag">Python</span><span class="tool-tag">STL Decomp</span><span class="tool-tag">Deneb</span></div>
+      </div>
+    </div>
+    <div class="dash-card reveal">
+      <div class="dash-thumb"><img src="https://i.ibb.co/KpjsrLSR/Monthly-target-Forecasting.png" alt="Monthly Target"/></div>
+      <div class="dash-info">
+        <span class="dash-tag">MONTHLY TARGET · PLAN VS ACTUAL</span>
+        <div class="dash-title">Monthly Target Dashboard</div>
+        <div class="dash-desc">Monthly target monitoring with future forecasts — Plan vs Actual across all categories with clear visual progress tracking.</div>
+        <div class="dash-tools"><span class="tool-tag">Power BI</span><span class="tool-tag">DAX</span><span class="tool-tag">Forecasting</span></div>
+      </div>
+    </div>
+    <div class="dash-card reveal">
+      <div class="dash-thumb"><img src="https://i.ibb.co/20dBkgLZ/Follow-up-Projects-Master-Sheet.webp" alt="Master Dashboard"/></div>
+      <div class="dash-info">
+        <span class="dash-tag">MASTER DASHBOARD · ALL PROJECTS</span>
+        <div class="dash-title">Master Dashboard — All Projects Follow-up</div>
+        <div class="dash-desc">Comprehensive board — project status (In Progress / Review / Hold), Cash Flow 113M SAR, site & material & procurement readiness, payment methods, and manufacturing locations.</div>
+        <div class="dash-tools"><span class="tool-tag">Power BI</span><span class="tool-tag">DAX</span><span class="tool-tag">Oracle</span><span class="tool-tag">Cash Flow</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">// What I Offer</div>
+  <h2 class="section-title">How Can I <span>Help You?</span></h2>
+  <p class="section-desc">Professional services built on 15+ years of real-world experience in industry and data.</p>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <span class="service-icon">🔮</span>
+      <div class="service-name">Demand Forecasting Model</div>
+      <div class="service-desc">Building an AI model that predicts demand volume or sales for upcoming months, identifying peak and low points to support planning and procurement decisions.</div>
+      <div class="dash-tools" style="margin-top:1rem"><span class="tool-tag">Python</span><span class="tool-tag">Prophet</span><span class="tool-tag">Power BI</span></div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">🏗️</span>
+      <div class="service-name">Project Management Consulting</div>
+      <div class="service-desc">Preparing a comprehensive Master Plan, tracking project progress, analyzing delay causes (Delay Analysis), and delivering periodic reports to senior management in a professional manner.</div>
+      <div class="dash-tools" style="margin-top:1rem"><span class="tool-tag">MS Project</span><span class="tool-tag">Primavera</span><span class="tool-tag">PMP®</span></div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">📁</span>
+      <div class="service-name">Data Organization & Report Automation</div>
+      <div class="service-desc">Organizing and consolidating scattered data, connecting it to Power BI to build interactive dashboards, and automating recurring reports using VBA or Python to save time and effort.</div>
+      <div class="dash-tools" style="margin-top:1rem"><span class="tool-tag">Power BI</span><span class="tool-tag">VBA</span><span class="tool-tag">Python</span></div>
+    </div>
+    <div class="service-card reveal">
+      <span class="service-icon">⚙️</span>
+      <div class="service-name">ERP Integration with Power BI</div>
+      <div class="service-desc">Designing a professional reporting layer on top of ERP systems (Oracle / SAP and others), connecting them directly to Power BI to produce real-time interactive dashboards for management needs.</div>
+      <div class="dash-tools" style="margin-top:1rem"><span class="tool-tag">Oracle</span><span class="tool-tag">SAP</span><span class="tool-tag">Power BI</span></div>
+    </div>
+    <div class="service-card reveal" style="border-color:rgba(240,192,64,.2)">
+      <span class="service-icon">🤝</span>
+      <div class="service-name">Monthly Retainer — Data Partner</div>
+      <div class="service-desc">Fixed monthly subscription including: periodic reports for senior management, updated dashboards, sales forecasts & inventory monitoring, resource organization, monthly targets, and KPIs for each department.</div>
+      <div class="dash-tools" style="margin-top:1rem"><span class="tool-tag">Power BI</span><span class="tool-tag">KPIs</span><span class="tool-tag">Reporting</span><span class="tool-tag">Planning</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PYTHON MODELS -->
+<section id="models">
+  <div class="section-label">// Python & Data Science</div>
+  <h2 class="section-title">Data Science <span>Models</span></h2>
+  <p class="section-desc">Statistical analysis and machine learning models built with Python to solve real-world problems.</p>
+  <div class="models-grid">
+    <div class="model-card reveal">
+      <div class="model-num">01</div>
+      <div class="model-title">Car Price Prediction — Linear Regression</div>
+      <div class="model-desc">Linear Regression model to predict car prices based on specifications — data cleaning, feature engineering, and performance evaluation.</div>
+      <div class="model-result">📈 R² Score: 0.87</div>
+      <div class="dash-tools"><span class="tool-tag">Python</span><span class="tool-tag">Pandas</span><span class="tool-tag">NumPy</span><span class="tool-tag">Scikit-learn</span><span class="tool-tag">Matplotlib</span></div>
+    </div>
+    <div class="model-card reveal">
+      <div class="model-num">02</div>
+      <div class="model-title">Customer Churn Prediction — Logistic Regression</div>
+      <div class="model-desc">Classification model to predict customer churn — analyzing factors influencing churn and helping sales teams retain customers effectively.</div>
+      <div class="dash-tools"><span class="tool-tag">Python</span><span class="tool-tag">Pandas</span><span class="tool-tag">Scikit-learn</span><span class="tool-tag">Seaborn</span></div>
+    </div>
+    <div class="model-card reveal">
+      <div class="model-num">03</div>
+      <div class="model-title">Customer Segmentation — K-Means Clustering</div>
+      <div class="model-desc">Segmenting customers into homogeneous groups based on purchasing behavior — to improve marketing strategies and understand demand patterns.</div>
+      <div class="dash-tools"><span class="tool-tag">Python</span><span class="tool-tag">Pandas</span><span class="tool-tag">Scikit-learn</span><span class="tool-tag">K-Means</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">// Education & Certifications</div>
+  <h2 class="section-title">Education & <span>Certifications</span></h2>
+  <p class="section-desc">A strong academic background supported by internationally recognized professional certifications.</p>
+  <div class="edu-grid">
+    <div class="edu-card reveal">
+      <div class="edu-icon">🏆</div>
+      <div class="edu-degree">Project Management Professional — PMP®</div>
+      <div class="edu-place">PMI · Credential #4132936</div>
+      <div class="edu-year">Feb 2025 — Jun 2025 · Renewal: June 2028</div>
+      <div class="edu-note">The highest international certification in project management</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🎓</div>
+      <div class="edu-degree">Diploma in Project Management — PRMG</div>
+      <div class="edu-place">American University in Cairo (AUC)</div>
+      <div class="edu-year">Sep 2015 — Jun 2016</div>
+      <div class="edu-note">Grade: Excellent</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">⚙️</div>
+      <div class="edu-degree">Lean Six Sigma Black Belt — Training Course</div>
+      <div class="edu-place">TÜV — German Standards Institute</div>
+      <div class="edu-year">Sep 2019 — Jan 2020</div>
+      <div class="edu-note">Highest level in quality improvement methodology</div>
+    </div>
+    <div class="edu-card reveal">
+      <div class="edu-icon">🏛️</div>
+      <div class="edu-degree">B.Sc. Civil Engineering</div>
+      <div class="edu-place">Ain Shams University — Faculty of Engineering</div>
+      <div class="edu-year">Sep 2006 — Jun 2011</div>
+      <div class="edu-note">Very Good grade — Excellent in graduation project</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// About Me</div>
+  <h2 class="section-title">Who <span>Am I?</span></h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center">
+    <div class="reveal">
+      <p style="font-size:1.05rem;line-height:2;color:var(--muted)">
+        A Project & Data Engineer with <strong style="color:var(--text)">15+ years</strong> of experience across various industries, combining an engineering mindset with data tools to turn numbers into clear, actionable decisions.
+        <br><br>
+        Leading major projects and building precise planning and analytics systems — from <strong style="color:var(--text)">Master Plans</strong> to <strong style="color:var(--gold)">interactive Dashboards</strong> and AI-powered forecasting models.
+        <br><br>
+        Holds <strong style="color:var(--gold)">PMP®</strong> from PMI, <strong style="color:var(--gold)">Lean Six Sigma Black Belt</strong> from TÜV, and is a graduate of <strong style="color:var(--text)">Faculty of Engineering — Ain Shams University</strong>.
+      </p>
+    </div>
+    <div class="reveal" style="display:flex;flex-direction:column;gap:.8rem">
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.4rem">
+        <span style="font-size:1.8rem">🏗️</span>
+        <div><div style="font-weight:700;font-size:.95rem">Project Management</div><div style="color:var(--muted);font-size:.82rem">AIC Steel · El Sewedy · Zamil Steel</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.4rem">
+        <span style="font-size:1.8rem">⚡</span>
+        <div><div style="font-weight:700;font-size:.95rem">Power BI & Data Analytics</div><div style="color:var(--muted);font-size:.82rem">100+ Interactive Dashboards</div></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1rem 1.4rem">
+        <span style="font-size:1.8rem">🐍</span>
+        <div><div style="font-weight:700;font-size:.95rem">Python & AI Forecasting</div><div style="color:var(--muted);font-size:.82rem">Prophet · Scikit-learn · Pandas</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">// Get In Touch</div>
+    <h2 class="section-title" style="text-align:center">Have a <span>Project?</span></h2>
+    <p class="section-desc" style="margin:1rem auto 0;text-align:center">Available for consulting, project management, and professional dashboard development.</p>
+    <div class="contact-cards">
+      <a href="mailto:mohamedabdelgawad27@gmail.com" class="contact-card email">
+        <span class="contact-icon">✉️</span>
+        <div><div class="contact-label">EMAIL</div><div class="contact-value">mohamedabdelgawad27@gmail.com</div></div>
+      </a>
+      <a href="https://wa.me/201007456505" target="_blank" class="contact-card whatsapp">
+        <span class="contact-icon">💬</span>
+        <div><div class="contact-label">WHATSAPP</div><div class="contact-value">+20 1007456505</div></div>
+      </a>
+    </div>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/mohamed-gawad-pmp%C2%AE-prmg-auc-8625b688/" target="_blank" class="social-btn">💼 LinkedIn</a>
+      <a href="https://github.com/mohamedabdelgawad27-prog" target="_blank" class="social-btn">🐙 GitHub</a>
+      <a href="mailto:mohamedabdelgawad27@gmail.com" class="social-btn">📄 Request CV</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-logo">MOHAMED GAWAD · PMP® · PROJECT & DATA EXPERT</span>
+  <span>© 2025 · Zahraa El Maadi, Cairo, Egypt</span>
+</footer>
+
+<script>
+  (function(){
+    const img=document.getElementById('profileImg');
+    img.onerror=function(){
+      const c=document.createElement('canvas');c.width=400;c.height=500;
+      const ctx=c.getContext('2d');
+      const g=ctx.createLinearGradient(0,0,400,500);
+      g.addColorStop(0,'#181c24');g.addColorStop(1,'#0f1218');
+      ctx.fillStyle=g;ctx.fillRect(0,0,400,500);
+      ctx.fillStyle='#f0c040';ctx.font='bold 100px Arial';
+      ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('MG',200,250);img.src=c.toDataURL();
+    };
+    img.src='https://i.ibb.co/v405C7ZR/Cut-Paste-2026-06-01-23-07-11-826.png';
+  })();
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        setTimeout(()=>e.target.classList.add('visible'),80*(Array.from(document.querySelectorAll('.reveal')).indexOf(e.target)%4));
+        obs.unobserve(e.target);
+      }
+    });
+  },{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  const sObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const f=e.target.querySelector('.skill-fill');
+        if(f){const w=f.style.width;f.style.width='0%';setTimeout(()=>{f.style.width=w;},200);}
+      }
+    });
+  },{threshold:.3});
+  document.querySelectorAll('.skill-card').forEach(c=>sObs.observe(c));
+</script>
+</body>
+</html>
